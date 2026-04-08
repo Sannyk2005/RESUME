@@ -99,18 +99,11 @@
       margin-top: 20px;
     }
   </style>
-   <!-- 🔥 STEP 1: ADD YOUR EMAILJS PUBLIC KEY -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("B1ao1iTfCG4jXhYQf");  <!-- 🔴 REPLACE THIS -->
-    })();
-  </script>
 </head>
 <body>
   <header>
     <div class="profile">
-      <img src="C:\Users\KIIT\Desktop\RESUME\photo.jpg" alt="My Photo">
+      <img src="photo.jpg" alt="My Photo">
       <h1>Sanny Kumar</h1>
     </div>
     <nav>
@@ -165,24 +158,29 @@
     <p>&copy; 2026 Sanny Kumar. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Simple form validation and feedback
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      let name = document.getElementById("name").value.trim();
-      let email = document.getElementById("email").value.trim();
-      let message = document.getElementById("message").value.trim();
-      let formMessage = document.getElementById("formMessage");
+ <script>
+(function(){
+  emailjs.init("B1ao1iTfCG4jXhYQf"); // YOUR PUBLIC KEY
+})();
 
-      if (name && email && message) {
-        formMessage.textContent = "Thank you, " + name + "! Your message has been sent.";
-        formMessage.style.color = "green";
-        this.reset();
-      } else {
-        formMessage.textContent = "Please fill out all fields.";
-        formMessage.style.color = "red";
-      }
-    });
-  </script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  emailjs.send("service_94872ci", "template_hgvsa5l", {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value
+  })
+  .then(function(response) {
+    document.getElementById("formMessage").textContent = "Message sent successfully!";
+    document.getElementById("formMessage").style.color = "green";
+    document.getElementById("contactForm").reset();
+  }, function(error) {
+    document.getElementById("formMessage").textContent = "Failed to send message!";
+    document.getElementById("formMessage").style.color = "red";
+    console.log(error);
+  });
+});
+</script>
 </body>
 </html>
