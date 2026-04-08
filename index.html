@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Resume</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: rgb(204, 239, 251);
+      color: #333;
+    }
+    header {
+      background: rgb(66, 196, 243);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-bottom: 10px;
+      box-shadow: 2px 2px 3px grey;
+    }
+    .profile h1 {
+      margin: 0;
+      font-size: 28px;
+      text-shadow: 2px 2px 5px grey;
+    }
+    nav {
+      margin-top: 15px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-shadow: 2px 2px 4px grey;
+    }
+    .section-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 40px;
+      gap: 20px;
+    }
+    .section-box {
+      flex: 1 1 calc(50% - 20px);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: rgb(66, 196, 243);
+      margin-bottom: 15px;
+    }
+    .skills span {
+      display: inline-block;
+      background: rgb(66, 196, 243);
+      color: white;
+      padding: 6px 10px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      background: rgb(66, 196, 243);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background: #0056b3;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+   <!-- 🔥 STEP 1: ADD YOUR EMAILJS PUBLIC KEY -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("B1ao1iTfCG4jXhYQf");  <!-- 🔴 REPLACE THIS -->
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="profile">
+      <img src="C:\Users\KIIT\Desktop\RESUME\photo.jpg" alt="My Photo">
+      <h1>Sanny Kumar</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#edu">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="section-row">
+    <div class="section-box" id="about">
+      <h2>About Me</h2>
+      <p>Hello! I’m Sanny Kumar, a passionate developer who loves building web applications and learning new technologies.</p>
+    </div>
+    <div class="section-box" id="edu">
+      <h2>Education</h2>
+      <p>I'm currently a 2nd year CSE student at Kalinga Institute of Industrial Technology (KIIT), Bhubaneshwar.</p>
+    </div>
+    <div class="section-box" id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>C Prpgramming</span>
+        <span>DSA</span>
+        <span>MATLAB</span>
+        <span>Basic LINUX</span>
+        <span>MySQL</span>
+        <span>Java</span>
+      </div>
+    </div>
+  </div>
+  <div class="section-row">
+    <div class="section-box" id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>A responsive portfolio website showcasing my skills and projects.</p>
+      </div>
+     </div>
+     <div class="section-box" id="contact">
+      <h2>Contact Me</h2>
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea><br>
+        <button type="submit">Send</button>
+      </form>
+      <div id="formMessage" style="margin-top:10px;"></div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 Sanny Kumar. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Simple form validation and feedback
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+      let formMessage = document.getElementById("formMessage");
+
+      if (name && email && message) {
+        formMessage.textContent = "Thank you, " + name + "! Your message has been sent.";
+        formMessage.style.color = "green";
+        this.reset();
+      } else {
+        formMessage.textContent = "Please fill out all fields.";
+        formMessage.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
